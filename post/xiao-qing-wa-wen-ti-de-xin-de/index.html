@@ -2,16 +2,17 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>汉诺塔游戏的心得 | zht的技术小站</title>
+<title>小青蛙问题的心得 | zht的技术小站</title>
 <link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1620481177629">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="汉诺塔游戏的心得 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="小青蛙问题的心得 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="从昨天到现在的碎片时间研究了下汉诺塔游戏的c语言实现，看到鹏哥c语言中提到了这个，就来试着自己学一学，刚学到递归调用，汉诺塔也算是一个递归调用的经典例题，刚好来巩固一下所学的知识，一开始谷歌了下网上的文档，内容不怎么容易懂，没怎么搞清楚，然..." />
+    <meta name="description" content="今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题。
+我把小青蛙问题分成成两个模块，一个是简单版，一个是进阶版，我们先来讲讲简单版本的小青蛙问题：有一只小青蛙一次能跳1个台阶或者2个台阶，如果台阶一共有n个，..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -51,11 +52,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              汉诺塔游戏的心得
+              小青蛙问题的心得
             </h2>
             <div class="post-info">
               <span>
-                2021-05-07
+                2021-05-08
               </span>
               <span>
                 3 min read
@@ -65,12 +66,11 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>从昨天到现在的碎片时间研究了下汉诺塔游戏的c语言实现，看到鹏哥c语言中提到了这个，就来试着自己学一学，刚学到递归调用，汉诺塔也算是一个递归调用的经典例题，刚好来巩固一下所学的知识，一开始谷歌了下网上的文档，内容不怎么容易懂，没怎么搞清楚，然后在B站找了个视频看，现在终于弄得差不多懂了，来分享一下自己的想法。<br>
-先来简单介绍一下汉诺塔游戏，我直接谷歌了一下简介：汉诺塔（Tower of Hanoi），又称河内塔，是一个源于印度古老传说的益智玩具。大梵天创造世界的时候做了三根金刚石柱子，在一根柱子上从下往上按照大小顺序摞着64片黄金圆盘。大梵天命令婆罗门把圆盘从下面开始按大小顺序重新摆放在另一根柱子上。并且规定，在小圆盘上不能放大圆盘，在三根柱子之间一次只能移动一个圆盘。简单来说就是有三根柱子A、B、C,在A上有若干个从下往上逐渐变小的圆盘，要从柱子A借助柱子B转移到柱子C，规则就是：①一次只能转移一个圆盘。②较大的圆盘不能放在较小的圆盘上。<img src="https://zht88821.github.io/post-images/1620396589941.jfif" alt="" loading="lazy">  如果只是让你直接操作应该也不算难，如果在c语言上实现呢?<br>
-这个游戏算法在c语言中实现需要用到函数递归，要用到递归，那么首先需要把一个大的问题分解成一个小的步骤，然后能重复调用这个步骤接近结果，直到执行结束。<img src="https://zht88821.github.io/post-images/1620396955102.png" alt="" loading="lazy">分解步骤我在B站看的视频里已经写的很明白了，我就直接借用这张图来描述了。图中把整个过程分成了三步，其中第一步和第三步又可以各自看成一次汉诺塔游戏，递归调用重复这三个步骤，递归的出口就是只剩下一个盘子的时候把最后一个盘子移到目的杆子上。<br>
-借助这个思想，就可以在编译器上来实现<img src="https://zht88821.github.io/post-images/1620397429887.png" alt="" loading="lazy"><br>
-假设有3个盘子的时候，程序的执行结果：<img src="https://zht88821.github.io/post-images/1620397541028.png" alt="" loading="lazy"><br>
-汉诺塔游戏的心得到这里了，如果能帮到大家，是我的荣幸😀！</p>
+                <p>今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题。<br>
+我把小青蛙问题分成成两个模块，一个是简单版，一个是进阶版，我们先来讲讲简单版本的小青蛙问题：有一只小青蛙一次能跳1个台阶或者2个台阶，如果台阶一共有n个，问小青蛙总共有多少种跳法？ 先从最简单的问题入手，如果n=1的时候，，小青蛙一共只能选择（1）这1种跳法，如果n=2的时候，小青蛙可以选择（1,1）或者（2）这2种跳法，那么n=3的时候，小青蛙可以选择（1,1,1）、（1,2）、（2,1）3种跳法，n=4的时候可以选择（1,1,1,1)、(https://zht88821.github.io/post-images/1620481049944.png)<br>
+在图中jump1函数是用函数递归的方式实现这个问题的，已知最简单的n=1和n=2的时候直接返回种类，将n =1和 n=2设置为递归的出口，在n&gt;2的时候用了公式f(n)=f(n-1)+f(n-2),实现了这个游戏，但是用函数递归的方法可以发现，f(n)=f(n-1)+f(n-2) , 其中的f(n-1)递归成f(n-2)+f(n-3), 其中的f(n-2)又递归成f(n-3)+f(n-4)，可以发现计算中需要大量重复计算相同的值，计算存在大量的冗余，当n的值非常大时 ，计算的效率很低很低，那有什么办法解决呢？<br>
+解决办法就是图中的jump2函数，用循环方式解决了计算的大量冗余，使计算不存在冗余，大大提高计算速度。for循环中运用了三个整形变量a,b,c，当n = 1时直接输出1种，当n&gt;=2时，使a+b的值赋给c，b赋给a,c赋给b，实现了数值的变化，在最后返回c。当n=6的时候程序的运行结果如下：<img src="https://zht88821.github.io/post-images/1620478993435.png" alt="" loading="lazy">，此时小青蛙问题的简易版就解决啦，接下来可以挑战进阶版了😀<br>
+那么什么是小青蛙问题的进阶版呢？就是把问题稍微改一下，假设有n个台阶，小青蛙现在可以一次跳1个台阶、一次跳2个台阶、一次跳3个台阶...一次跳n个台阶，请问小青蛙共有多少种跳法呢？是不是感觉难一点了呢，把这个问题弄懂，小青蛙问题应该就没问题了吧，现在我们来讨论一下这个问题？</p>
 
               </div>
               <div class="toc-container">
@@ -83,9 +83,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://zht88821.github.io/post/hello-world/">
+            <a href="https://zht88821.github.io/post/han-nuo-ta-you-xi-de-xin-de/">
               <h3 class="post-title">
-                Hello World!!!
+                汉诺塔游戏的心得
               </h3>
             </a>
           </div>

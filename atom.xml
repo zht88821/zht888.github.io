@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-07T14:34:20.933Z</updated>
+    <updated>2021-05-08T13:40:31.622Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,19 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[小青蛙问题的心得]]></title>
+        <id>https://zht88821.github.io/post/xiao-qing-wa-wen-ti-de-xin-de/</id>
+        <link href="https://zht88821.github.io/post/xiao-qing-wa-wen-ti-de-xin-de/">
+        </link>
+        <updated>2021-05-08T08:11:28.000Z</updated>
+        <content type="html"><![CDATA[<p>今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题。<br>
+我把小青蛙问题分成成两个模块，一个是简单版，一个是进阶版，我们先来讲讲简单版本的小青蛙问题：有一只小青蛙一次能跳1个台阶或者2个台阶，如果台阶一共有n个，问小青蛙总共有多少种跳法？ 先从最简单的问题入手，如果n=1的时候，，小青蛙一共只能选择（1）这1种跳法，如果n=2的时候，小青蛙可以选择（1,1）或者（2）这2种跳法，那么n=3的时候，小青蛙可以选择（1,1,1）、（1,2）、（2,1）3种跳法，n=4的时候可以选择（1,1,1,1)、(https://zht88821.github.io/post-images/1620481049944.png)<br>
+在图中jump1函数是用函数递归的方式实现这个问题的，已知最简单的n=1和n=2的时候直接返回种类，将n =1和 n=2设置为递归的出口，在n&gt;2的时候用了公式f(n)=f(n-1)+f(n-2),实现了这个游戏，但是用函数递归的方法可以发现，f(n)=f(n-1)+f(n-2) , 其中的f(n-1)递归成f(n-2)+f(n-3), 其中的f(n-2)又递归成f(n-3)+f(n-4)，可以发现计算中需要大量重复计算相同的值，计算存在大量的冗余，当n的值非常大时 ，计算的效率很低很低，那有什么办法解决呢？<br>
+解决办法就是图中的jump2函数，用循环方式解决了计算的大量冗余，使计算不存在冗余，大大提高计算速度。for循环中运用了三个整形变量a,b,c，当n = 1时直接输出1种，当n&gt;=2时，使a+b的值赋给c，b赋给a,c赋给b，实现了数值的变化，在最后返回c。当n=6的时候程序的运行结果如下：<img src="https://zht88821.github.io/post-images/1620478993435.png" alt="" loading="lazy">，此时小青蛙问题的简易版就解决啦，接下来可以挑战进阶版了😀<br>
+那么什么是小青蛙问题的进阶版呢？就是把问题稍微改一下，假设有n个台阶，小青蛙现在可以一次跳1个台阶、一次跳2个台阶、一次跳3个台阶...一次跳n个台阶，请问小青蛙共有多少种跳法呢？是不是感觉难一点了呢，把这个问题弄懂，小青蛙问题应该就没问题了吧，现在我们来讨论一下这个问题？</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[汉诺塔游戏的心得]]></title>
         <id>https://zht88821.github.io/post/han-nuo-ta-you-xi-de-xin-de/</id>
