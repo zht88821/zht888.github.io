@@ -1,78 +1,72 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>小青蛙跳台阶问题的心得 | zht的技术小站</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1620485118705">
+<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1620485177455">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
-
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="alternate" type="application/atom+xml" title="小青蛙跳台阶问题的心得 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
     <meta name="description" content="今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题！
 我把小青蛙问题分成成两个模块，一个是简单版，一个是进阶版，我们先来讲讲简单版本的小青蛙问题：有一只小青蛙一次能跳1个台阶或者2个台阶，如果台阶一共有n个，..." />
     <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div id="app" class="main">
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zht88821.github.io">
+  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1620485177455" alt="">
+  </a>
+  <h1 class="site-title">
+    zht的技术小站
+  </h1>
+  <p class="site-description">
+    加油学习赚大钱！！！
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zht88821.github.io">
-        <img src="https://zht88821.github.io/images/avatar.png?v=1620485118705" class="site-logo">
-        <h1 class="site-title">zht的技术小站</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-    </div>
+  </p>
+  <div class="menu-container">
+    
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
-      
-    </div>
-    <div class="site-description">
-      加油学习赚大钱！！！
-
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zht88821.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
+    
   </div>
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">小青蛙跳台阶问题的心得</h2>
-            <div class="post-date">2021-05-08</div>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              小青蛙跳台阶问题的心得
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-08
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
             
-            <div class="post-content" v-pre>
-              <p>今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题！<br>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>今天简单研究了下小青蛙问题，类似于斐波那契数列，废话不多说，现在来总结一下这个问题！<br>
 我把小青蛙问题分成成两个模块，一个是简单版，一个是进阶版，我们先来讲讲简单版本的小青蛙问题：有一只小青蛙一次能跳1个台阶或者2个台阶，如果台阶一共有n个，问小青蛙总共有多少种跳法？ 先从最简单的问题入手，如果n=1的时候，，小青蛙一共只能选择（1）这1种跳法，如果n=2的时候，小青蛙可以选择（1,1）或者（2）这2种跳法，那么n=3的时候，小青蛙可以选择（1,1,1）、（1,2）、（2,1）3种跳法，n=4的时候可以选择（1,1,1,1)、（1,1,2)、(1,2,1)、(2,2)、(2,1,1)五种，为了方便理解，我们把小青蛙问题看成一个函数：f(n)=n级台阶小青蛙能够选择的跳法总数，根据前面简单列举的几种情况，能发现一点简单的规律，比如：f(3)=f(2)+f(1)、f(4)=f(3)+f(2)。但是研究问题是要严谨的，不能这么随意的就下结论，我们来继续研究一下，当n很大的时候，最后一步无非就只有两种情况：最后一步还剩下1个台阶或者最后一步还剩下2个台阶。  把问题想到这里，就感觉豁然开朗了，最后一步剩下1个台阶的方法数就是f(n-1)，最后一步剩下2个台阶的方法数就是f(n-2),那么就得出我们的推论：      f(n)=f(n-1)+f(n-2),事实上的定论和我们的推论是一样的，在知道了原理，现在我们可以来开始用C语言实现这个问题啦！<br>
 <img src="https://zht88821.github.io/post-images/1620482199987.png" alt="" loading="lazy"><br>
 在图中jump1函数是用函数递归的方式实现这个问题的，已知最简单的n=1和n=2的时候直接返回种类，将n =1和 n=2设置为递归的出口，在n&gt;2的时候用了公式f(n)=f(n-1)+f(n-2),实现了这个游戏，但是用函数递归的方法可以发现，f(n)=f(n-1)+f(n-2) , 其中的f(n-1)递归成f(n-2)+f(n-3), 其中的f(n-2)又递归成f(n-3)+f(n-4)，可以发现计算中需要大量重复计算相同的值，计算存在大量的冗余，当n的值非常大时 ，计算的效率很低很低，那有什么办法解决呢？<br>
@@ -86,45 +80,76 @@
 <img src="https://zht88821.github.io/post-images/1620484153734.png" alt="" loading="lazy"><br>
 到现在为止，小青蛙跳台阶的问题算是讲清楚了，如果能帮到你，那是我的荣幸，很高兴分享自己的心得😋！</p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://zht88821.github.io/post/han-nuo-ta-you-xi-de-xin-de/">
-                  <h3 class="post-title">
-                    汉诺塔游戏的心得
-                  </h3>
-                </a>
               </div>
-            
-
-            
-
-          </div>
-
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
         </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zht88821.github.io/post/han-nuo-ta-you-xi-de-xin-de/">
+              <h3 class="post-title">
+                汉诺塔游戏的心得
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zht88821.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
       </div>
     </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+    <script>
+      hljs.initHighlightingOnLoad()
 
-AOS.init();
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-</script>
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-
-
-
-
+    </script>
   </body>
 </html>
