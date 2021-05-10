@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-08T14:48:22.824Z</updated>
+    <updated>2021-05-10T09:27:11.664Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,36 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言-数组-冒泡排序及数组传参的用法]]></title>
+        <id>https://zht88821.github.io/post/c-yu-yan-shu-zu-mou-pao-pai-xu-ji-shu-zu-chuan-can-de-yong-fa/</id>
+        <link href="https://zht88821.github.io/post/c-yu-yan-shu-zu-mou-pao-pai-xu-ji-shu-zu-chuan-can-de-yong-fa/">
+        </link>
+        <updated>2021-05-10T09:03:41.000Z</updated>
+        <content type="html"><![CDATA[<p>在学习了数组的有关知识后，和B站教学视频一起码了个冒泡排序，啥是冒泡排序呢？很简单，就是将一个数组按照升/降序排列，很简单的一个小问题，直接上代码：<br>
+<img src="https://zht88821.github.io/post-images/1620638475146.png" alt="" loading="lazy"><br>
+在代码里定义了一个bubble_sort函数，这里是用来将数组按升序排序的，数组的个数sz的计算之所以不能在函数中，是因为数组名传参只是传过去首元素的地址，在函数中使用sizeof运算符不能计算出正确的数组个数，所以在   main函数中提前将sz算出，然后作为函数参数输入，这里继续提一句，一般来说数组名传参代表首元素的地址，但有两种特殊情况：①在sizeof(数组名)的时候，数组名代表整个数组；②&amp;数组名 代表的是整个数组的地址。<br>
+函数中设置了flag，防止在数组已经有序的情况下，进行多余的运算。<br>
+此代码的运行结果：<br>
+<img src="https://zht88821.github.io/post-images/1620638127505.png" alt="" loading="lazy"><br>
+冒泡排序啰嗦到这了，希望能帮到大家！😁</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言-数组-冒泡排序]]></title>
+        <id>https://zht88821.github.io/post/c-yu-yan-shu-zu-mou-pao-pai-xu/</id>
+        <link href="https://zht88821.github.io/post/c-yu-yan-shu-zu-mou-pao-pai-xu/">
+        </link>
+        <updated>2021-05-10T09:03:41.000Z</updated>
+        <content type="html"><![CDATA[<p>在学习了数组的有关知识后，和B站教学视频一起码了个冒泡排序，啥是冒泡排序呢？很简单，就是将一个数组按照升/降序排列，很简单的一个小问题，直接上代码：<br>
+<img src="https://zht88821.github.io/post-images/1620637573418.png" alt="" loading="lazy"><br>
+在代码里定义了一个bubble_sort函数，这里是用来将数组按升序排序的，数组的个数sz之所以不能在函数中，是因为数组名传参只是传过去首元素的地址，使用sizeof运算符不能计算出正确的数组个数，所以在   main函数中提前将sz算出，然后作为函数参数输入，这里继续提一句，一般来说数组名传参代表首元素的地址，但有两种特殊情况：①在sizeof(数组名)的时候，数组名代表整个数组；②&amp;数组名 代表的是整个数组的地址。<br>
+函数中设置了flag，防止在数组已经有序的情况下，进行多余的运算。<br>
+此代码的运行结果：<br>
+<img src="https://zht88821.github.io/post-images/1620638127505.png" alt="" loading="lazy"><br>
+冒泡排序啰嗦到这了，希望能帮到大家！😁</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小青蛙跳台阶问题的心得]]></title>
         <id>https://zht88821.github.io/post/xiao-qing-wa-tiao-tai-jie-wen-ti-de-xin-de/</id>
