@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>关于三子棋游戏的C语言实现 | zht的技术小站</title>
-<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1620976995765">
+<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1620977204841">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="关于三子棋游戏的C语言实现 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
@@ -23,7 +23,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zht88821.github.io">
-  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1620976995765" alt="">
+  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1620977204841" alt="">
   </a>
   <h1 class="site-title">
     zht的技术小站
@@ -72,7 +72,7 @@
                 <p>最近学到了三子棋游戏的C语言实现，在这里我写一写我自己的心得吧！😄<br>
 什么是三子棋呢，简单来说，就是上学时候经常在本子上画来画去的井字棋，<br>
 只要横着、竖着或者斜着三个相同的子连成一条线，就算游戏胜利，两个玩家参与，采用回合制。规则是不是很简单呢？现在我们来谈一下，如果要在C语言中实现，要考虑哪些问题呢，首先要考虑的是棋盘上下棋的信息怎么保存，刚学过数组，我们就用3*3的二维数组来保存我们棋子的信息，棋盘的打印就封装一个函数来实现，棋盘在没下之前要‘清空’，所以我们还得封装一个初始化二维数组的函数， 下棋的时候就下在二维数组的对应位置，玩家下棋得封装一个函数，电脑下棋的函数要实现随机，每下完一步还得判断下是否有输赢，或者平局。大致的思路就是这样，现在我们来开始实现代码。<br>
-首先我们在vs编译器上创建一个项目，创建一个test.c源文件，用作测试；一个game.c源文件，用于代码的具体实现；一个game.h头文件，用于函数的声明。大概是这样：<br>
+我们先在vs编译器上创建一个项目，创建一个test.c源文件，用作测试；一个game.c源文件，用于代码的具体实现；一个game.h头文件，用于函数的声明。大概是这样：<br>
 <img src="https://zht88821.github.io/post-images/1620911963182.png" alt="" loading="lazy"><br>
 首先我们要写test.c文件，把整个程序的执行流程写下来：<br>
 <img src="https://zht88821.github.io/post-images/1620912080449.png" alt="" loading="lazy"><br>
