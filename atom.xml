@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-10T09:28:08.700Z</updated>
+    <updated>2021-05-14T07:21:50.542Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,58 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[关于三子棋游戏的C语言实现]]></title>
+        <id>https://zht88821.github.io/post/guan-yu-san-zi-qi-you-xi-de-c-yu-yan-shi-xian/</id>
+        <link href="https://zht88821.github.io/post/guan-yu-san-zi-qi-you-xi-de-c-yu-yan-shi-xian/">
+        </link>
+        <updated>2021-05-13T12:58:03.000Z</updated>
+        <content type="html"><![CDATA[<p>最近学到了三子棋游戏的C语言实现，在这里我写一写我自己的心得吧！😄<br>
+什么是三子棋呢，简单来说，就是上学时候经常在本子上画来画去的井字棋，<br>
+只要横着、竖着或者斜着三个相同的子连成一条线，就算游戏胜利，两个玩家参与，采用回合制。规则是不是很简单呢？现在我们来谈一下，如果要在C语言中实现，要考虑哪些问题呢，首先要考虑的是棋盘上下棋的信息怎么保存，刚学过数组，我们就用3*3的二维数组来保存我们棋子的信息，棋盘的打印就封装一个函数来实现，棋盘在没下之前要‘清空’，所以我们还得封装一个初始化二维数组的函数， 下棋的时候就下在二维数组的对应位置，玩家下棋得封装一个函数，电脑下棋的函数要实现随机，每下完一步还得判断下是否有输赢，或者平局。大致的思路就是这样，现在我们来开始实现代码。<br>
+首先我们在vs编译器上创建一个项目，创建一个test.c源文件，用作测试；一个game.c源文件，用于代码的具体实现；一个game.h头文件，用于函数的声明。大概是这样：<br>
+<img src="https://zht88821.github.io/post-images/1620911963182.png" alt="" loading="lazy"><br>
+首先我们要写test.c文件，把整个程序的执行流程写下来：<br>
+<img src="https://zht88821.github.io/post-images/1620912080449.png" alt="" loading="lazy"><br>
+封装了一个test（）函数，test()函数的实现为：<br>
+<img src="https://zht88821.github.io/post-images/1620912148392.png" alt="" loading="lazy"><br>
+先进入游戏，先打印菜单，封装一个菜单函数：<br>
+<img src="https://zht88821.github.io/post-images/1620912332321.png" alt="" loading="lazy"><br>
+接下来就进入游戏流程了，输入1，进入游戏：<br>
+<img src="https://zht88821.github.io/post-images/1620912601654.png" alt="" loading="lazy"><br>
+游戏的流程在图片中说明了，其中封装的函数在game.h头文件中也声明了<br>
+<img src="https://zht88821.github.io/post-images/1620913024438.png" alt="" loading="lazy"><br>
+函数的大概意思也注释了，还定义两个常量ROW、COL，方便棋盘大小的更改，引入三个头文件会在后面用到。InitBoard()函数的实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620913254665.png" alt="" loading="lazy"><br>
+DisplayBoard()函数的实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620913323916.png" alt="" loading="lazy"><br>
+井字棋的打印的要点是分组将数据行和分割行循环打印大概这样分组：<br>
+<img src="https://zht88821.github.io/post-images/1620914323338.png" alt="" loading="lazy"><br>
+就这样打印一行数据，打印一行分割行，再设置条件每行数据和分割行的最后一个竖杠不用打印，而且分割行只需打印row-1行。数据行相当于:   |   |   |,最后一个|不用打；分割行相当于:---|---|---|,同理最后一个|不用打，这样就好设置条件完成棋盘的打印了。<br>
+PlayerMove函数实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620973958678.png" alt="" loading="lazy"><br>
+大致就是判断输入的坐标是否合法，合法的话就存在数组里。<br>
+ComputerMove函数实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620974287867.png" alt="" loading="lazy"><br>
+用rand()函数实现电脑随机走棋。<br>
+每次玩家或者电脑走完棋之后还要判断下游戏的状态，封装了IsWin函数，实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620974610165.png" alt="" loading="lazy"><br>
+判断横三行，竖三行和两个对角线是否相等且不为空，如果没有就判断棋盘是否满了，封装了一个IsFull函数实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620974949634.png" alt="" loading="lazy"><br>
+如果都不满足，则继续游戏。<br>
+游戏运行结果如下：<br>
+玩家赢的情况：<br>
+<img src="https://zht88821.github.io/post-images/1620976259624.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620976267423.png" alt="" loading="lazy"><br>
+电脑赢的情况：<br>
+<img src="https://zht88821.github.io/post-images/1620976495695.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620976503782.png" alt="" loading="lazy"><br>
+平局的情况:<br>
+<img src="https://zht88821.github.io/post-images/1620976820759.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620976833394.png" alt="" loading="lazy"></p>
+<p>这个游戏的讲解到这里了，具体的代码实现到我的github上有：https://github.com/zht88821/C_CODE，希望能帮到大家！😀</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言-数组-冒泡排序及数组传参的用法]]></title>
         <id>https://zht88821.github.io/post/c-yu-yan-shu-zu-mou-pao-pai-xu-ji-shu-zu-chuan-can-de-yong-fa/</id>
