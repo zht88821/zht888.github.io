@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-14T07:28:07.306Z</updated>
+    <updated>2021-05-14T09:59:14.460Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,61 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[关于扫雷游戏的C语言代码实现与心得]]></title>
+        <id>https://zht88821.github.io/post/guan-yu-sao-lei-you-xi-de-c-yu-yan-dai-ma-shi-xian-yu-xin-de/</id>
+        <link href="https://zht88821.github.io/post/guan-yu-sao-lei-you-xi-de-c-yu-yan-dai-ma-shi-xian-yu-xin-de/">
+        </link>
+        <updated>2021-05-14T07:43:51.000Z</updated>
+        <content type="html"><![CDATA[<p>扫雷相信大家都玩过吧，就是一个矩形方阵中有一些雷，你点到不是雷的位置，会显示周围一圈有几个雷，直到把所有非雷方格都点完，就算是游戏胜利了。<br>
+在C语言中实现这个逻辑要怎么考虑呢？同样我们用到了数组，这次我们用两个数组来实现，一个用来存放雷的数组，一个用来存放显示给玩家棋盘游戏状态的数组，有了两个数组，我们要先初始化，打印棋盘，然后布置雷，扫雷，每一步判断一下是否胜利，进阶一下，我们可以设计一个函数实现：如果一个坐标不是雷，让周围不是雷的一大片一起消除，直到周围有雷为止；还可以设计做标记、第一步就踩雷的话重置雷等等。整体的逻辑就是这样，我们来实现一下。<br>
+首先依然在VS编译器中创建一个扫雷游戏的项目，在项目里面创建text.c、game.c和game.h三个文件，分别用来存放游戏main函数及游戏流程、函数的实现、函数的声明。<br>
+<img src="https://zht88821.github.io/post-images/1620978949791.png" alt="" loading="lazy"><br>
+创建好后，我们首先要实现流程和main（）函数，main()函数就很简单的流程：<br>
+<img src="https://zht88821.github.io/post-images/1620979211381.png" alt="" loading="lazy"><br>
+main函数中的test()函数：<br>
+<img src="https://zht88821.github.io/post-images/1620979318165.png" alt="" loading="lazy"><br>
+函数中实现了游戏的流程，其中的srand是用来设置时间戳，为之后的随机取值做准备，menu（）函数的实现很简单：<br>
+<img src="https://zht88821.github.io/post-images/1620979533001.png" alt="" loading="lazy"><br>
+选择1进入游戏后，game函数是游戏的总流程，实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620979618804.png" alt="" loading="lazy"><br>
+其中的流程是，先创建数组，一个用来布置雷，一个用来排查雷，然后再用自定义的InitBoard（）函数用来初始化数组，SetMine（）用来布置雷，DisplayBoard()用来打印棋盘，最后FindMine() 用来扫雷和判断游戏状态。知道了大概流程，我们在game.h头文件中声明一下我们需要的这些函数：<br>
+<img src="https://zht88821.github.io/post-images/1620979856624.png" alt="" loading="lazy"><br>
+函数的意义图片上一一都注释出来了，引了三个头文件需要用，定义了五个常量后面都要用，这样定义常量，方便游戏后面修改棋盘的大小和雷的数量。到现在为止，game.h头文件和test.c测试文件都已经编辑好了，我们最后来编辑game.c文件，来实现声明的这些函数。<br>
+InitBoard()初始化棋盘函数的实现：<br>
+<img src="https://zht88821.github.io/post-images/1620980095024.png" alt="" loading="lazy"><br>
+形参set用来指示初始化的字符，方便两个棋盘不同的初始化要求。<br>
+DisplayBoard()打印棋盘函数的实现:<br>
+<img src="https://zht88821.github.io/post-images/1620980214900.png" alt="" loading="lazy"><br>
+SetMine（）布置雷函数的实现：<br>
+<img src="https://zht88821.github.io/post-images/1620980411730.png" alt="" loading="lazy"><br>
+定义的常量EASY_COUNT用来指定雷的数量，这时候rand()函数用来随机在棋盘中放置雷，rand() % row + 1 和 rand() % col + 1刚好在1-9范围内，符合我们要随机布置雷的要求。<br>
+FindMine()排雷的函数实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620980919600.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620980926286.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620980931230.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1620980936151.png" alt="" loading="lazy"><br>
+排雷函数有点长，首先我们在一个大while循环中，用switch函数让我们选择，这里我设计了三个选项：1.排雷；2.做标记；3.取消标记；分别对应case1、case2、case3。   排雷中如果第一步就踩雷我们就重置雷，用rand()随机让一个不为雷的位置变成雷，而第一步踩到的雷变成了非雷，然后继续游戏，整形变量cnt用来存放非雷的数量，用来后面判断是否胜利,get_mine_count（)用来统计坐标周围雷的数量，实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620982014989.png" alt="" loading="lazy"><br>
+函数类型为int型，最后还要加一个'0'变成整形，原理去看ASCII码表🤣<br>
+Clean（）函数用来一次性排除非雷位置周围所有非雷位置，直到展开到周围有雷为止，实现如图：<br>
+<img src="https://zht88821.github.io/post-images/1620982575311.png" alt="" loading="lazy"><br>
+函数的大概意思就是先判断非雷坐标周围八个坐标的周围八个坐标周围是否有雷，直到旁边有雷就停止，没有雷继续递归调用Clean()函数，实现一次展开大量非雷坐标，用count接收展开的格子数，后面cnt-count用来判断是否胜利。<br>
+标记功能和取消标记功能的实现很简单，就不赘述了，还用了一个goto语句如果不是第一次踩雷，就跳转到end语句进行判断，整个游戏的实现就讲的差不多了。</p>
+<p>运行结果：<br>
+排雷：<br>
+<img src="https://zht88821.github.io/post-images/1620983232606.png" alt="" loading="lazy"><br>
+标记：<br>
+<img src="https://zht88821.github.io/post-images/1620983252172.png" alt="" loading="lazy"><br>
+取消标记：<br>
+<img src="https://zht88821.github.io/post-images/1620983267291.png" alt="" loading="lazy"><br>
+扫雷成功：<br>
+<img src="https://zht88821.github.io/post-images/1620983471137.png" alt="" loading="lazy"><br>
+被炸死了：<br>
+<img src="https://zht88821.github.io/post-images/1620983521050.png" alt="" loading="lazy"><br>
+我的心得讲完了，希望能帮助到大家！😄，具体的代码在我的github上：https://github.com/zht88821/C_CODE。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于三子棋游戏的C语言实现]]></title>
         <id>https://zht88821.github.io/post/guan-yu-san-zi-qi-you-xi-de-c-yu-yan-shi-xian/</id>
