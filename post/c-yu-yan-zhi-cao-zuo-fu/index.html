@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言之操作符 | zht的技术小站</title>
+<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1621262595443">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言之操作符 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="操作符是C语言中计算求值的工具，类似于数学中的加减乘除等各种符号，操作符分成：算术操作符、移位操作符、位操作符、赋值操作符、单目操作符、关系操作符、逻辑操作符、条件操作符、逗号操作符、下标引用操作符、函数调用操作符、结构成员操作符等，操作符..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zht88821.github.io">
+  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1621262595443" alt="">
+  </a>
+  <h1 class="site-title">
+    zht的技术小站
+  </h1>
+  <p class="site-description">
+    加油学习赚大钱！！！
+
+  </p>
+  <div class="menu-container">
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言之操作符
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-17
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>操作符是C语言中计算求值的工具，类似于数学中的加减乘除等各种符号，操作符分成：算术操作符、移位操作符、位操作符、赋值操作符、单目操作符、关系操作符、逻辑操作符、条件操作符、逗号操作符、下标引用操作符、函数调用操作符、结构成员操作符等，操作符的使用也有严格的规定，现在我来随便谈谈关于操作符。<br>
+一、算数操作符。算数操作符有+、-、*、/、%，使用有一定的规则：1.除了% 操作符，其他操作符可以作用于整型和浮点型。     2.对于/操作符，如果两个操作数为整型，则执行整型除法，返回商；而只要有浮点型，则执行浮点型除法。    3.%操作符的两个操作数必须为整型，返回的是整除后的余数。</p>
+<p>二、移位操作符。移位操作符移动的是二进制位，有&lt;&lt;（左移操作符）、&gt;&gt;(右移操作符)。  左移操作符的规则：左边抛弃，右边补零。<br>
+<img src="https://zht88821.github.io/post-images/1621259026675.png" alt="" loading="lazy"><br>
+右移操作符的规则分为两种：1.逻辑右移，左边用0填充，右边抛弃；2.算数右移，左边用原数符号位填充，右边抛弃。<br>
+<img src="https://zht88821.github.io/post-images/1621259213659.png" alt="" loading="lazy"><br>
+对于移位操作符，不能移动负数位。<br>
+nt num = 10;<br>
+num&gt;&gt;-1;//error</p>
+<p>三、位操作符。位操作符有&amp;(按位与)、|(按位或)、^(按位异或)，位操作符操作数必须为整数。<br>
+位操作符的简单代码应用：<br>
+<img src="https://zht88821.github.io/post-images/1621259502845.png" alt="" loading="lazy"></p>
+<p>四、赋值操作符。=为赋值操作符，可以给变量赋上你想要的值。又有复合赋值操作符，+=、-=、*=、 /=、%=、》=、《=、&amp;=、|=、^=。比如 a = a+2等价于a += 2。</p>
+<p>五、单目操作符。单目操作符有!(逻辑反操作)、-(负值)、+(正值)、&amp;(取地址)、sizeof(操作数的类型长度)、~(按二进制位取反)、++、--、*(解引用操作符)、(类型)强制类型转换。</p>
+<p>六、关系操作符。&gt;、&gt;=、&lt;、&lt;=、!=、==。</p>
+<p>七、逻辑操作符。逻辑&amp;&amp;、逻辑||。注意！！：逻辑&amp;&amp;只要左边为假，就不计算右边的表达式；逻辑||只要左边为真，就不计算右边的表达式。</p>
+<p>八、条件操作符。exp1 ? exp2 : exp3。意思是式子1为真，结果为式子2，否则为式子3。</p>
+<p>九、逗号表达式。逗号表达式是用逗号隔开的多个表达式。执行顺序为从左向右依次执行。整个表达式的结果是最后一个表达式的结果。</p>
+<p>十、下标引用、函数调用、结构成员。下标引用[]的操作数为：一个数组名+一个索引值。<br>
+( ) 函数调用操作符 接受一个或者多个操作数：第一个操作数是函数名，剩余的操作数就是传递给函数的参数。<br>
+访问一个结构体的成员有.操作符和-&gt;操作符。使用方法如图：<br>
+<img src="https://zht88821.github.io/post-images/1621260889642.png" alt="" loading="lazy"></p>
+<p>有些表达式的操作数在运算时可能需要类型转换，有两种隐式类型转换：第一种为整形提升，用于计算长度小于int或unsigned int的类型，先转换为后者，再进行运算。整形提升的规则为：1.有符号位按照高位补充符号位。2.无符号位高位补充0。实例如下：<br>
+<img src="https://zht88821.github.io/post-images/1621261281046.png" alt="" loading="lazy"><br>
+整形提升的代码例子：<br>
+<img src="https://zht88821.github.io/post-images/1621261408942.png" alt="" loading="lazy"><br>
+执行结果为只打印c。<br>
+第二种隐式转换为算数转换：较低精度的操作数转换为较高精度的操作数类型，注意可能会丢失精度。</p>
+<p>操作符讲完了，现在来讲讲操作符的属性。操作符的属性有三部分：1.操作符的优先级。2.操作符的结合性<br>
+3.是否控制求值顺序。两个相邻的操作符先执行哪个？取决于他们的优先级。如果两者的优先级相同，取决于他们的结合性。有是否控制求值性质的操作符有 ?     :  、&amp;&amp;、||、逗号 。  因为能控制求值，比如说逻辑与左边为假，那就直接为假，不再计算右边表达式的值。</p>
+<p>在进行表达式求值的时候，会出现表达式有许多条路径解法，比如：<br>
+<img src="https://zht88821.github.io/post-images/1621261972605.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621262025906.png" alt="" loading="lazy"><br>
+所以得出结论：我们写出的表达式如果不能通过操作符的属性确定唯一的计算路径，那这个表达式就是存在问题的。</p>
+<p>关于操作符讲完了，如果能帮到大家，我感到十分荣幸！😁</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zht88821.github.io/post/guan-yu-sao-lei-you-xi-de-c-yu-yan-dai-ma-shi-xian-yu-xin-de/">
+              <h3 class="post-title">
+                关于扫雷游戏的C语言代码实现与心得
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zht88821.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
