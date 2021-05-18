@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-17T14:43:18.109Z</updated>
+    <updated>2021-05-18T14:14:49.909Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,51 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言之初识指针]]></title>
+        <id>https://zht88821.github.io/post/c-yu-yan-zhi-chu-shi-zhi-zhen/</id>
+        <link href="https://zht88821.github.io/post/c-yu-yan-zhi-chu-shi-zhi-zhen/">
+        </link>
+        <updated>2021-05-18T13:23:00.000Z</updated>
+        <content type="html"><![CDATA[<p>今天学了一点C语言中指针的知识，现在来总结一下。</p>
+<p>指针是什么？通俗点来讲，指针就是一个变量，是用来存放地址的变量。地址是用来唯一标识一块空间的，指针变量的大小在32位机器上是4字节，在64位机器上是8个字节。那么指针有哪些类型呢？我们知道在C语言中有int类型，char类型，short类型，float类型等等，而指针的类型的定义方式为type*  ，比如int* 、char* 、short* 、float* 等等，不同的类型存放的地址不同，比如：int* 类型是为了存放int类型变量的地址，char* 类型是为了存放char类型变量的地址。</p>
+<p>我们来谈一下指针类型的意义是什么？<br>
+①.指针+-整数<br>
+<img src="https://zht88821.github.io/post-images/1621344819787.png" alt="" loading="lazy"><br>
+指针类型决定指针向前或向后走一步的距离。比如说（char*+1）指向下一个字节，而(int*+1)指向后面第4个字节。<br>
+②.指针的解引用（如下图描述）<br>
+<img src="https://zht88821.github.io/post-images/1621345090423.png" alt="" loading="lazy"></p>
+<p>指针还会出现一种情况，那就是野指针：野指针就是指针指向的位置是不可知的（随机的、不正确的、没有明确限制的）。出现野指针会使程序出错，那么哪些情况会出现野指针呢？<br>
+①指针未初始化<br>
+<img src="https://zht88821.github.io/post-images/1621345308945.png" alt="" loading="lazy"><br>
+②指针越界访问<br>
+<img src="https://zht88821.github.io/post-images/1621345349692.png" alt="" loading="lazy"><br>
+③指针指向的空间释放<br>
+比如说函数中的局部变量的地址赋给了一个指针，但是出了函数局部变量销毁，就会引起这种情况。<br>
+那么如何规避野指针呢？有四种方法：①.指针初始化  。   ②.小心指针越界。  ③. 指针指向空间释放的变量即置为NULL。   ④. 指针使用之前检查有效性。<br>
+<img src="https://zht88821.github.io/post-images/1621345590405.png" alt="" loading="lazy"></p>
+<p>指针的运算有三种方式：①指针+-整数<br>
+<img src="https://zht88821.github.io/post-images/1621345760640.png" alt="" loading="lazy"><br>
+在数组中运用指针+-整数可以找到不同的元素。<br>
+②指针-指针<br>
+<img src="https://zht88821.github.io/post-images/1621345869418.png" alt="" loading="lazy"><br>
+在求数组中元素个数可以运用这个运算。<br>
+③指针的关系运算<br>
+<img src="https://zht88821.github.io/post-images/1621345997305.png" alt="" loading="lazy"><br>
+但是上述代码不可以写成这样：<br>
+<img src="https://zht88821.github.io/post-images/1621346160559.png" alt="" loading="lazy"><br>
+这样指针会越界成为野指针，还有C语言标准规定允许指向数组元素的指针与指向数组最后一个元素后面的那个内存位置的指针比较，但是不允许与指向第一个元素之前的那个内存位置的指针进行比较。</p>
+<p>在数组中，可以使用指针来访问数组：<br>
+<img src="https://zht88821.github.io/post-images/1621346573989.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621346580567.png" alt="" loading="lazy"></p>
+<p>指针中还有二级指针。<br>
+<img src="https://zht88821.github.io/post-images/1621346732610.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621346739947.png" alt="" loading="lazy"></p>
+<p>指针也可以有数组，称为指针数组，数组里的元素就是指针类型变量。<br>
+<img src="https://zht88821.github.io/post-images/1621346827484.png" alt="" loading="lazy"></p>
+<p>总结了下简单的指针内容，希望对大家有帮助😄。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言之操作符]]></title>
         <id>https://zht88821.github.io/post/c-yu-yan-zhi-cao-zuo-fu/</id>
