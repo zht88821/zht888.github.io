@@ -1,0 +1,180 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言之数据的存储     学习心得 | zht的技术小站</title>
+<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1621923581703">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言之数据的存储     学习心得 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="今天将数据存储的知识学习了下，来写点东西巩固一下自己所学的知识。
+在C语言中，有许多的内置数据类型，就是本来就定义好的数据类型，比如：
+
+数据类型的归类可以分为：整型、浮点型、构造类型、指针类型、空类型。
+
+整型又可分为 char、shor..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zht88821.github.io">
+  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1621923581703" alt="">
+  </a>
+  <h1 class="site-title">
+    zht的技术小站
+  </h1>
+  <p class="site-description">
+    加油学习赚大钱！！！
+
+  </p>
+  <div class="menu-container">
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言之数据的存储     学习心得
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-24
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://zht88821.github.io/post-images/c-yu-yan-zhi-shu-ju-de-cun-chu-xue-xi-xin-de.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>今天将数据存储的知识学习了下，来写点东西巩固一下自己所学的知识。<br>
+在C语言中，有许多的内置数据类型，就是本来就定义好的数据类型，比如：<br>
+<img src="https://zht88821.github.io/post-images/1621870493006.png" alt="" loading="lazy"><br>
+数据类型的归类可以分为：整型、浮点型、构造类型、指针类型、空类型。<br>
+<img src="https://zht88821.github.io/post-images/1621870711930.png" alt="" loading="lazy"><br>
+整型又可分为 char、short、int、long，浮点型可分为float和double，构造类型可分为数组、结构体、枚举和联合类型，指针也有许多种类型。</p>
+<p>先来谈谈整型在内存中是如何存储的，先引入三个表示概念：原码，反码，补码，这三种码都是有符号位和数值位的，最高位代表符号位，0为正数，1为负数。原码是直接将整型翻译成二进制就行。    反码就是在原码的基础上符号位不变，其余为取反。    补码就是反码+1。 在整型中，正数的原、反、补码都相同，只有负数的原、反、补码都不同，对于整型，在内存中存储的是补码，这样规定的原因是，使用补码可以将符号位和数值位统一处理，同时加法减法也可以统一处理。<br>
+<img src="https://zht88821.github.io/post-images/1621871388286.png" alt="" loading="lazy"><br>
+在知道了整型的原反补码，在编译器中查看一个整型在内存中的存储方式如图：<br>
+<img src="https://zht88821.github.io/post-images/1621871674189.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621872062727.png" alt="" loading="lazy"><br>
+经过编译，发现内存中确实存的是16进制补码，但是仔细一看好像又有点不太对劲，在内存中怎么是倒过来记录的呢？20的十六进制为0x00000014，14为低地址，而图中在内存中低地址的地方也是14，虽然看着是倒着的，但是其实是低地址放在内存低地址处，这里有引出内存的存储的大小端机制。</p>
+<figure data-type="image" tabindex="1"><img src="https://zht88821.github.io/post-images/1621872265036.png" alt="" loading="lazy"></figure>
+<p>大端存储模式就是数据的低位保存在内存的高地址中，而数据的高位保存在内存的低地址中。<br>
+小端存储模式刚好相反。</p>
+<p>现在来讲浮点数在内存中的存储方式，先来看看下面这个程序及输出结果：<br>
+<img src="https://zht88821.github.io/post-images/1621873180471.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621873188374.png" alt="" loading="lazy"><br>
+为啥用浮点型取整数和用整数取浮点数，打印出来的数字这么奇怪呢？ 我们首先得了解浮点数在计算机内部的存储方式。根据国际标准IEEE（电气和电子工程协会） 754中规定了任意二进制浮点数，可以表示为如下图所示：<br>
+<img src="https://zht88821.github.io/post-images/1621873398975.png" alt="" loading="lazy"><br>
+对于其中的s,M,E在内存中是这样保存的：<br>
+<img src="https://zht88821.github.io/post-images/1621873512790.png" alt="" loading="lazy"><br>
+IEEE 754中规定了float(32位)、double（64)位在内存中的存储方式。IEEE 754标准对有效数字M和和指数E，还有一些特别的规定。因为1&lt;=M&lt; 2,所以M的形式是1.xxxxxxx ，其中xxxxxxx表示小数部分，因为IEEE 754规定，在计算机中保存M时，默认这个数的第一位总是1，因此可以舍去，只保存后面xxxxxxx的部分，等到读取的时候，再把第一位的1加上去，这样做可以节省一位有效数字， 增加一位精度。<br>
+<img src="https://zht88821.github.io/post-images/1621922029483.png" alt="" loading="lazy"></p>
+<p>指数E的情况比较复杂，E为一个无符号整数（unsigned int)，如果E为8位，它的取值范围为0-255，但是我们知道科学计数法中的E是可以出现负数的，所以IEEE 754规定，存入内存时E的真实值必须加上一个中间数， 对于8位的E，这个中间数是127，比如E = 10时，存入内存就要保存成10+127=137，即10001001。<br>
+<img src="https://zht88821.github.io/post-images/1621922422654.png" alt="" loading="lazy"><br>
+E从内存中取出来也有三种情况：<br>
+<img src="https://zht88821.github.io/post-images/1621922585734.png" alt="" loading="lazy"><br>
+那么上述用浮点数打印整数和用整数打印浮点数的异常就可以解释了：<br>
+<img src="https://zht88821.github.io/post-images/1621922893272.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1621923107781.png" alt="" loading="lazy"></p>
+<p>数据的存储就讲到这，希望对大家有帮助！😄</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zht88821.github.io/post/c-yu-yan-zhi-chu-shi-zhi-zhen/">
+              <h3 class="post-title">
+                C语言之初识指针
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zht88821.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
