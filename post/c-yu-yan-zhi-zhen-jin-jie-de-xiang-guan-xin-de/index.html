@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C语言---指针进阶的相关心得 | zht的技术小站</title>
-<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1622539364306">
+<link rel="shortcut icon" href="https://zht88821.github.io/favicon.ico?v=1622540033263">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://zht88821.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="C语言---指针进阶的相关心得 | zht的技术小站 - Atom Feed" href="https://zht88821.github.io/atom.xml">
@@ -24,7 +24,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://zht88821.github.io">
-  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1622539364306" alt="">
+  <img class="avatar" src="https://zht88821.github.io/images/avatar.png?v=1622540033263" alt="">
   </a>
   <h1 class="site-title">
     zht的技术小站
@@ -155,7 +155,7 @@ int( *  compare)(const void</em>,const void*))//是函数指针，比较两个�
 <p>下面我自己用代码实现了qsort的自制版<br>
 <img src="https://zht88821.github.io/post-images/1622536928527.png" alt="" loading="lazy"><br>
 <img src="https://zht88821.github.io/post-images/1622536936461.png" alt="" loading="lazy"><br>
-bubble_sort是自己声明的一个函数，函数的参数和qsort的一模一样，void* base可以使不同类型的数组首元素地址可以传进来，最后一个参数是函数指针，指向一个比较函数，比较函数的参数是        void  * ,void  * ，可以灵活的自定义比较函数中需要传过来的参数。<br>
+bubble_sort是自己声明的一个函数，函数的参数和qsort的一模一样，void* base可以使不同类型的数组首元素地址可以传进来，最后一个参数是函数指针，指向一个比较函数，比较函数的参数是        void  * ,void  * ，可以灵活的自定义比较函数中需要传过来的参数的类型。<br>
 在两个元素比较的过程中，将void* base强制类型转换为char*,因为参数中也给了数组中每个元素的字节数width，width*j ，因为char *的权限是一次移动一个字节，移动width个字节刚好跳过一个元素，这样就可以访问后续的元素。<br>
 交换函数中，参数设置为char * ，也可以一个字节一个字节的交换两个元素的值，交换width次，就实现了两个元素的交换。</p>
 <p>以上就是指针进阶的相关内容，如果能帮到你，属实万幸😁！</p>
