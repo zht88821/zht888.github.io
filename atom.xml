@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zht88821.github.io</id>
     <title>zht的技术小站</title>
-    <updated>2021-05-31T14:08:01.379Z</updated>
+    <updated>2021-06-01T09:22:48.966Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zht88821.github.io"/>
     <link rel="self" href="https://zht88821.github.io/atom.xml"/>
@@ -11,6 +11,103 @@
     <logo>https://zht88821.github.io/images/avatar.png</logo>
     <icon>https://zht88821.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zht的技术小站</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言---指针进阶的相关心得]]></title>
+        <id>https://zht88821.github.io/post/c-yu-yan-zhi-zhen-jin-jie-de-xiang-guan-xin-de/</id>
+        <link href="https://zht88821.github.io/post/c-yu-yan-zhi-zhen-jin-jie-de-xiang-guan-xin-de/">
+        </link>
+        <updated>2021-06-01T01:14:22.000Z</updated>
+        <content type="html"><![CDATA[<p>最近几天深度学习了下指针，收获了不少，在此记录一下所学的知识。</p>
+<p>之前也写了一下指针的基本知识，下面继续介绍更高级的知识：<br>
+<img src="https://zht88821.github.io/post-images/1622510751878.png" alt="" loading="lazy"></p>
+<p>我主要进行字符指针、数组指针、指针数组、数组和指针传参、函数指针、函数指针数组、指向函数数组的指针、回调函数来讲解。</p>
+<p>一、字符指针<br>
+我首先从字符指针开始讲，字符指针就是char*型的指针，一般使用就是将字符指针指向一个字符的地址  如下：<br>
+<img src="https://zht88821.github.io/post-images/1622510838892.png" alt="" loading="lazy"><br>
+还可以将字符指针指向一个常量字符串，这时候字符指针实质上是指向了字符串首字符的地址：<br>
+<img src="https://zht88821.github.io/post-images/1622511148704.png" alt="" loading="lazy"><br>
+现在来看看下面一串代码:<br>
+<img src="https://zht88821.github.io/post-images/1622511237146.png" alt="" loading="lazy"><br>
+str3和str4指向同一个常量字符串，指向同一块内存，但是用相同的字符串初始化不同的数组时就会开辟不同的空间，所以str1和str2不同，str3和str4相同。</p>
+<p>二、指针数组<br>
+指针数组就是一个数组，数组的每个元素是同一个指针类型。比如 int* p[5] 、char * pp[5]。<br>
+<img src="https://zht88821.github.io/post-images/1622511453102.png" alt="" loading="lazy"></p>
+<p>三、数组指针<br>
+数组指针是一个指针，我们知道整型指针int* p能够指向整型数据，浮点型指针float* pf能够指向浮点型数据，那么数组指针就是能够指向数组的指针。<br>
+数组指针的写法是:int (*p)[10]，这个例子的意思是p和 *先结合表示p是一个指针变量，指向的是一个大小为10个整型的数组。<br>
+<img src="https://zht88821.github.io/post-images/1622511867840.png" alt="" loading="lazy"><br>
+在这里拓展一下数组名和&amp;数组名的区别：<br>
+<img src="https://zht88821.github.io/post-images/1622512122120.png" alt="" loading="lazy"><br>
+通过打印int arr[10]的数组名和&amp;数组名，我们发现打印出来的值是相等的，但是这两个地址在本质上是有区别的，不信来看看下面的打印：<br>
+<img src="https://zht88821.github.io/post-images/1622512199933.png" alt="" loading="lazy"><br>
+我们发现&amp;arr和arr的值虽然相等，但是意义不一样，&amp;arr表示整个数组的地址，数组的地址+1跳过整个数组大小，而arr代表数组首元素的地址，数组首元素地址+1代表跳过一个整型的地址。<br>
+数组指针可以用来在函数中接收一个二维数组数组名，我们知道数组名表示首元素地址，而二维数组的首元素是二维数组的第一行的地址，相当于是一个一维数组地址，比如int arr[3][5]，arr代表首元素地址，相当于是arr[0],arr[0]是一个一维数组，数组有5个整型元素。  实例如图：<br>
+<img src="https://zht88821.github.io/post-images/1622513025978.png" alt="" loading="lazy"><br>
+下面四行代码分别代表什么呢？<br>
+int arr[5];//是一个有五个元素的整型数组<br>
+int *parr1[10];//是一个有10个元素的整型指针数组<br>
+int (*parr2)[10];//是一个数组指针，指向一个有10个元素的整型数组<br>
+int (*parr3[10])[5];//首先parr3和[]结合，说明它是一个数组，数组有10个元素，  每个元素是int ( * )[5]的数组指针，指向一个有五个元素的整型数组的指针。</p>
+<p>四、数组、指针传参<br>
+在写代码的时候难免要把数组或者指针传给函数，那么函数的参数该如何设计呢？<br>
+一维数组传参：<br>
+<img src="https://zht88821.github.io/post-images/1622513521104.png" alt="" loading="lazy"><br>
+一维数组传参时，参数可以设计成用数组来接收，也可以用指针来接收。</p>
+<p>二维数组传参：<br>
+<img src="https://zht88821.github.io/post-images/1622513711562.png" alt="" loading="lazy"><br>
+二维数组传参时，参数可以设计成用数组来接收，也可以用指针来接收。需要注意的是，用数组来接收的时候，数组的第二个方块里的内容也就是列 不可以省略，如果用指针来接受，需要使用数组指针。</p>
+<p>一级指针传参：<br>
+<img src="https://zht88821.github.io/post-images/1622514088606.png" alt="" loading="lazy"><br>
+思考一个问题：当函数形参为一个一级指针时，实参可以传什么?<br>
+<img src="https://zht88821.github.io/post-images/1622514180399.png" alt="" loading="lazy"></p>
+<p>二级指针传参：<br>
+<img src="https://zht88821.github.io/post-images/1622514388688.png" alt="" loading="lazy"><br>
+思考一个问题：当函数形参为一个二级指针时，实参可以传什么？<br>
+<img src="https://zht88821.github.io/post-images/1622514456573.png" alt="" loading="lazy"></p>
+<p>五、函数指针<br>
+什么是函数指针呢？顾名思义就是一个指针，指针中保存着函数的地址，指针指向的是一个函数，那么我们讨论下函数的地址是什么呢？我们先来看一段代码：<br>
+<img src="https://zht88821.github.io/post-images/1622533205311.png" alt="" loading="lazy"><br>
+以上代码将函数名和&amp;函数名以地址的形式打印出来，我们可以看到两种方式打印出的结果是一样的，所以可以得出函数名和&amp;函数名都是函数的地址，那么我们怎么将函数地址保存在指针中呢？<br>
+标准的写法是：void （ * p）(int,int),正确的解读是变量p先和 * 结合表示是一个指针，指针指向一个函数，函数的返回类型是void,函数有两个参数分别为int , int。代码实例：<br>
+<img src="https://zht88821.github.io/post-images/1622533715719.png" alt="" loading="lazy"><br>
+当要调用函数指针时，可以直接指针名＋（参数 ）或者 * 指针名 + （参数），两者的作用是一样的，程序的执行结果为：<br>
+<img src="https://zht88821.github.io/post-images/1622533803055.png" alt="" loading="lazy"><br>
+接着我们来阅读两段有趣的代码：<br>
+<img src="https://zht88821.github.io/post-images/1622533891885.png" alt="" loading="lazy"><br>
+代码1感觉有点复杂，我们怎么来解读呢？先将里面的void( * )( )看成一个函数指针类型，指向的函数是无参的，返回类型是void，接着我们发现这个类型将常量0强制类型转换为这个指针类型，然后再调用这个指针指向的函数，这么一解读是不是感觉容易理解了一些呢？<br>
+代码2好像更加复杂，那我们怎么解读呢？首先我们将代码2化简：<br>
+<img src="https://zht88821.github.io/post-images/1622534090243.png" alt="" loading="lazy"><br>
+先将void(*)(int)这个函数指针重命名为pfun_t，化简之后的代码变成了                        pfun_t signal( int ,pfun_t),我们很容易的就看出了这是一个函数声明，函数名为signal,函数的返回类型是一个函数指针，函数有两个参数类型，一个是int型, 一个是函数指针类型，这样看立马就一目了然了。</p>
+<p>六、函数指针数组<br>
+数组是一个存放相同类型数据的存储空间，那么什么是函数指针数组呢，其实就是一个数组，数组的每个元素都是一个函数指针，实质上就是将函数的地址存到一个数组中。那么函数指针数组该如何表达呢？<br>
+标准的写法是：int(<em>parr[10])(int,int)，将这个例子解读为变量parr先和[ ]结合，因为[ ]的优先级大于   * ， parr[10]表示一个数组，有十个元素，每个元素的类型是int(</em>)(int,int)类型的函数指针，函数指针指向的函数的返回类型是int，指向的函数的参数类型为（int,int）。<br>
+函数指针数组的用途是：转移表。代码实例：<br>
+<img src="https://zht88821.github.io/post-images/1622534920370.png" alt="" loading="lazy"><br>
+代码中变量p是一个函数指针数组，存放了具有相同返回类型，相同参数类型的四个函数地址，有效减少了代码的冗余，使代码清爽简短。</p>
+<p>七、指向函数指针数组的指针<br>
+是不是感觉很复杂？我第一次读的时候也绕晕了，我们先来捋一捋，其实指向函数指针数组的指针，实质上是一个指针，指针指向一个数组，数组的元素是函数指针类型。其实也不是很复杂。那么如何来定义这个指针呢？来看下面的代码：<br>
+<img src="https://zht88821.github.io/post-images/1622535851738.png" alt="" loading="lazy"><br>
+代码中的变量ppfunArr就是一个指向函数指针数组的指针，ppfunArr先和* 结合，说明它是一个指针，指针指向一个数组，数组有10个元素，每个元素是一个void( * )(const char*)类型的函数指针。</p>
+<p>八、回调函数<br>
+什么是回调函数呢？简单来讲回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就称被调用的函数为回调函数。回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的，用于对该事件或条件进行响应。<br>
+首先我们来介绍一下qsort库函数，它是一个快速排序函数，将一个数组从小到大进行顺序排序，那么qsort函数的参数是什么呢？<br>
+qsort 的函数原型是void qsort<br>
+(void<em>base,//待排序数组的首元素地址<br>
+size_t num,//待排序数组的元素个数<br>
+size_t width,//待排序数组的每个元素的大小 - 单位是字节<br>
+int( *  compare)(const void</em>,const void*))//是函数指针，比较两个元素的函数的地址 - 由函数使用者自己实现</p>
+<p>在qsort函数中，有四个参数，最后一个参数是一个函数指针，指向一个比较两个元素的函数的地址，这个函数需要由使用者自己实现，这个被调用的函数就被称为回调函数。<br>
+在函数中出现了void*这个类型，这个类型是干嘛的呢？void  * 可以接收任何指针类型，但是不能进行解引用操作，不能进行指针+-整数操作，但是可以将这个指针变量强制类型转换为别的类型的指针，进行解引用操作，所以说，void * 的灵活性很大，通常可以适应于很多的函数声明。<br>
+<img src="https://zht88821.github.io/post-images/1622536843749.png" alt="" loading="lazy"></p>
+<p>下面我自己用代码实现了qsort的自制版<br>
+<img src="https://zht88821.github.io/post-images/1622536928527.png" alt="" loading="lazy"><br>
+<img src="https://zht88821.github.io/post-images/1622536936461.png" alt="" loading="lazy"><br>
+bubble_sort是自己声明的一个函数，函数的参数和qsort的一模一样，void* base可以使不同类型的数组首元素地址可以传进来，最后一个参数是函数指针，指向一个比较函数，比较函数的参数是        void  * ,void  * ，可以灵活的自定义比较函数中需要传过来的参数。<br>
+在两个元素比较的过程中，将void* base强制类型转换为char*,因为参数中也给了数组中每个元素的字节数width，width*j ，因为char *的权限是一次移动一个字节，移动width个字节刚好跳过一个元素，这样就可以访问后续的元素。<br>
+交换函数中，参数设置为char * ，也可以一个字节一个字节的交换两个元素的值，交换width次，就实现了两个元素的交换。</p>
+<p>以上就是指针进阶的相关内容，如果能帮到你，属实万幸😁！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言之数据的存储     学习心得]]></title>
         <id>https://zht88821.github.io/post/c-yu-yan-zhi-shu-ju-de-cun-chu-xue-xi-xin-de/</id>
